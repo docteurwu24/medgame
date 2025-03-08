@@ -1,0 +1,60 @@
+{
+  "patient": {
+  "nom": "DUPONT",
+  "prenom": "Marie",
+  "age": 52,
+  "sexe": "F",
+  "taille": "162 cm",
+  "poids": "95 kg",
+  "groupeSanguin": "O+"
+  },
+  "interrogatoire": {
+  "motifHospitalisation": "Bilan de santé, suspicion de diabète de type 2",
+  "modeDeVie": {
+  "activitePhysique": { "description": "Sédentaire, marche occasionnelle" },
+  "tabac": { "quantite": "0 PA", "duree": "0 ans" },
+  "alcool": { "quantite": "Modéré" },
+  "alimentation": { "regime": "Déséquilibré", "particularites": "Consommation excessive de produits sucrés et gras" },
+  "emploi": { "profession": "Employée de bureau", "stress": "Modéré" }
+  },
+  "antecedents": {
+  "medicaux": [{ "type": "HTA", "traitement": "Captopril 25mg 2x/jour" }, { "type": "Dyslipidémie", "traitement": "Atorvastatine 20mg le soir" }],
+  "chirurgicaux": [{ "intervention": "Césarienne", "date": "2003" }],
+  "familiaux": [{ "lien": "Mère", "pathologie": "Diabète de type 2", "age": "65" }, { "lien": "Père", "pathologie": "Infarctus du myocarde", "age": "60" }]
+  },
+  "traitements": [{ "nom": "Captopril", "dose": "25 mg", "frequence": "2/j" }, { "nom": "Atorvastatine", "dose": "20 mg", "frequence": "1/soir" }],
+  "allergies": { "presence": "false", "liste": [] },
+  "histoireMaladie": {
+  "debutSymptomes": "Plusieurs mois",
+  "evolution": "Progressive",
+  "facteursDeclenchants": "Aucun identifié",
+  "symptomesAssocies": ["Fatigue", "Polyurie", "Polydipsie"],
+  "remarques": "Prise de poids progressive ces dernières années"
+  }
+  },
+  "examenClinique": {
+  "constantes": {
+  "tension": "150/95 mmHg",
+  "pouls": "88 bpm",
+  "temperature": "37.0°C",
+  "saturationO2": "96%",
+  "frequenceRespiratoire": "16/min"
+  },
+  "aspectGeneral": "Surpoids, IMC élevé",
+  "examenCardiovasculaire": { "auscultation": "Normal" },
+  "examenPulmonaire": { "auscultation": "Normal" },
+  "examenAbdominal": { "palpation": "Normale" },
+  "examenNeurologique": { "conscience": "Normale" }
+  },
+  "availableExams": ["Bilan sanguin", "ECG"],
+  "examResults": {
+  "Bilan sanguin": "Glycémie à jeun : 1.8 g/L, HbA1c : 8.2%, Cholestérol total : 2.5 g/L, Triglycérides : 2.8 g/L, HDL-cholestérol : 0.4 g/L, LDL-cholestérol : 1.5 g/L",
+  "ECG": "Normal"
+  },
+  "correctDiagnostic": "Diabète de type 2",
+  "feedback": {
+  "Diabète de type 2": "Diagnostic correct !",
+  "default": "Diagnostic incorrect."
+  },
+  "scoringRules": { "correctDiagnostic": 100 }
+  }

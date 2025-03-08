@@ -1,0 +1,175 @@
+/* Styles spécifiques pour themes.html */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f2f1; /* Light Teal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     max-height: 10vh;
+}
+
+.h1 {
+    text-align: center;
+    color: #333;
+    font-size: 0.975em;
+}
+
+.back-link-bottom {
+    color: #0080ff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+.container {
+    width: 70%;
+    margin: 10px auto;
+    background-color: #fafafa;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#themes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 5px;
+}
+
+.theme-card {
+    background-color: #e0e0e0;
+    border-radius: 15px; /* Coins plus arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
+    padding: 20px; /* Augmentation du padding pour plus d'espace */
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transition sur la couleur de fond */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px; /* Hauteur augmentée pour les cartes */
+}
+
+.theme-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #c8e6c9; /* Light Green */
+}
+
+.theme-card i {
+    font-size: 2.5em; /* Augmentation de la taille de la police */
+    margin-bottom: 10px;
+}
+
+.theme-card h2 {
+    font-size: 0.85em; /* Titre agrandi */
+    margin-bottom: 0.3em;
+    color: #2e7d32; /* Dark Green */
+}
+
+.theme-subtitle {
+    font-size: 0.72em; /* Sous-titre agrandi */
+    color: #43a047;
+    margin-top: 0;
+}
+
+/* Couleurs des thèmes */
+.theme-card[data-theme="Cardiologie"] {
+    background-color: #fff; /* Blanc */
+}
+.theme-card[data-theme="Cardiologie"]:hover {
+    background-color: #f2dede; /* Rouge clair */
+}
+
+.theme-card[data-theme="Pneumologie"] {
+    background-color: #fff; /* Blanc */
+}
+.theme-card[data-theme="Pneumologie"]:hover {
+    background-color: #d9edf7; /* Bleu clair */
+}
+
+.theme-card[data-theme="Endocrinologie"] {
+    background-color: #fff; /* Blanc */
+}
+.theme-card[data-theme="Endocrinologie"]:hover {
+    background-color: #d9d2f7; /* Violet clair */
+}
+
+.theme-card[data-theme="Hématologie"] {
+    background-color: #fff; /* Blanc */
+}
+.theme-card[data-theme="Hématologie"]:hover {
+    background-color: #f2dede; /* Rouge clair */
+}
+
+.theme-card[data-theme="Gastro-entérologie"] {
+    background-color: #fff; /* Blanc */
+}
+.theme-card[data-theme="Gastro-entérologie"]:hover {
+    background-color: #dff0d8; /* Vert clair */
+}
+
+.theme-card[data-theme="Immunologie"] {
+    background-color: #fff; /* Blanc */
+}
+.theme-card[data-theme="Immunologie"]:hover {
+    background-color: #fcf8e3; /* Jaune clair */
+}
+
+.theme-info {
+    color: #333;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    font-size: 0.65em;
+    color: #333;
+}
+
+.reset-button {
+    background-color: #f0f0f0;
+    color: #666;
+    border: 1px solid #ccc;
+}
+
+.reset-button:hover {
+    background-color: #eee;
+}
+
+/* Styles pour le bouton "Commencer" */
+#start-button {
+  background-color: #0080ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+#start-button:hover {
+  background-color: #0066cc;
+}
+
+#start-button:disabled {
+  background-color: #ccc; /* Grisé quand désactivé */
+  cursor: not-allowed; /* Curseur interdit */
+}
+
+.section-title {
+    color: #333;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.2em;
+}
+.label {
+    font-weight: bold;
+}

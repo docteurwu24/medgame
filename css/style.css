@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #ADD8E6, #87CEEB); /* Ajout d'un dégradé de couleur */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Assure que le body prend au moins la hauteur de l'écran */
+}
+
+.container {
+    max-width: 800px;
+    margin: auto; /* Centrage horizontal */
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    text-align: center; /* Centrage du contenu du container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre portée */
+}
+
+.main-menu-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-menu-button:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 3em;
+    color: #006400; /* Dark Green */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ajout d'une ombre portée */
+    margin-bottom: 20px;
+}
+
+.main-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#play-button {
+    font-size: 1.5em;
+    background-color: #4CAF50; /* Vert plus vif */
+    color: white;
+    width: 250px;
+}
+
+#tutorial-button::before {
+    content: "\f02d"; /* Livre ouvert */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+#settings-button::before {
+    content: "\f013"; /* Roue dentée */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.emoji {
+    font-size: 3rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}

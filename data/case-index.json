@@ -1,0 +1,8 @@
+{
+  "cardiologie": ["cardio_1.json"],
+  "pneumologie": ["pneumo_1.json"],
+  "endocrinologie": ["EDN_diabetetype2_1.json"],
+  "hématologie": ["hemato_1.json"],
+  "gastro-entérologie": ["gastro_1.json"],
+  "immunologie": ["immuno_1.json"]
+}

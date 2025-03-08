@@ -1,0 +1,107 @@
+/* Conteneur principal global */
+.container {
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+/* Titre principal plus compact */
+.h1 {
+    margin: 5px 0;
+    font-size: 1.5rem;
+}
+
+/* Grille pour les dashboards médicaux */
+.medical-dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 0;
+    margin-bottom: 8px;
+    flex: 1; /* Chaque dashboard prend l'espace disponible */
+}
+
+/* Style de base pour les cartes médicales */
+.medical-card, .medical-card2 {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    font-size: 0.9rem;
+}
+
+/* Pour la carte double largeur */
+.medical-card2 {
+    grid-column: span 2;
+}
+
+/* Styles pour les titres de section */
+.section-title {
+    color: #333;
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    margin-right: 5px;
+}
+
+/* Styles pour les informations du patient */
+.patient-profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    float: right;
+    margin: 0 0 5px 5px;
+}
+
+.patient-profile p {
+    margin: 2px 0;
+}
+
+.label {
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+/* Styles compacts pour les détails */
+details {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+details > summary {
+    padding: 3px;
+    background-color: #e9e9e9;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+/* Styles plus compacts pour les boutons */
+button, input[type="text"] {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+}
+
+/* Style pour le bouton Cas Suivant et le lien de retour */
+#next-case, .back-link-bottom {
+    margin: 5px 0;
+}
+
+/* Style pour la grille interne dans examen-clinique */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.grid-container p {
+    margin: 3px 0;
+}
