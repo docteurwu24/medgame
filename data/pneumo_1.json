@@ -1,7 +1,7 @@
 {
   "patient": {
-    "nom": "POUMON",
-    "prenom": "Jean",
+    "nom": "Gérard",
+    "prenom": "Dupont",
     "age": 65,
     "sexe": "M",
     "taille": "175 cm",
@@ -12,7 +12,7 @@
     "motifHospitalisation": "Dyspnée et œdèmes",
     "modeDeVie": {
       "activitePhysique": { "description": "Sédentaire" },
-      "tabac": { "quantite": "20 PA", "duree": "30 ans" },
+      "tabac": { "quantite": "20 P/J", "duree": "30 ans" },
       "alcool": { "quantite": "Occasionnel" },
       "alimentation": { "regime": "Normal", "particularites": "Aucune" },
       "emploi": { "profession": "Retraité", "stress": "Faible" }
@@ -56,19 +56,38 @@
     "Bilan hépatique",
     "Dosage des D-dimères",
     "Dosage des BNP",
-    "Scanner thoracique"
+    "Scanner thoracique",
+    "Dosage des IgE",
+    "Sérologie VIH",
+    "Test de Guthrie",
+    "Coproculture",
+    "Dosage des hormones sexuelles",
+    "IRM cérébrale",
+    "Test de Mantoux",
+    "Analyse du liquide synovial",
+    "Dosage des anticorps anti-nucléaires"
   ],
   "examResults": {
     "ECG": "Tachycardie sinusale, présence d'ondes Q en territoire antérieur",
     "Echographie": "Fraction d’éjection réduite à 40%, hypokinésie globale",
     "Radiographie thoracique": "Cardiomégalie, signes de congestion pulmonaire",
     "Gaz du sang artériel": "pH 7.35, pCO2 45 mmHg, pO2 60 mmHg, HCO3- 24 mmol/L",
-    "Bilan sanguin complet": "Hémoglobine 13 g/dL, hématocrite 40%, leucocytes 8000/mm3, plaquettes 250000/mm3",
+    "Bilan sanguin complet": "Hémoglobine 13 g/dL, hématocrite 40%, leucocytes 6,6G/L, plaquettes 250 G/L",
     "Bilan rénal": "Créatinine 1.2 mg/dL, urée 40 mg/dL",
     "Bilan hépatique": "ASAT 30 U/L, ALAT 25 U/L, bilirubine totale 1.0 mg/dL",
     "Dosage des D-dimères": "1500 ng/mL (valeur normale < 500 ng/mL)",
     "Dosage des BNP": "800 pg/mL (valeur normale < 100 pg/mL)",
-    "Scanner thoracique": "Absence de thrombus pulmonaire, présence de foyers de condensation alvéolaire"
+    "Scanner thoracique": "Absence de thrombus pulmonaire, présence de foyers de condensation alvéolaire",
+    "Dosage des IgE": "Normaux",
+    "Sérologie VIH": "Négatif",
+    "Test de Guthrie": "Non applicable",
+    "Coproculture": "Absence de germes pathogènes",
+    "Dosage des hormones sexuelles": "Testostérone : 4 ng/mL (valeur normale)",
+    "IRM cérébrale": "Aucune anomalie détectée",
+    "Test de Mantoux": "Négatif",
+    "Analyse du liquide synovial": "Non contributif",
+    "Dosage des anticorps anti-nucléaires": "Négatif",
+    "glycemie": "1.1 g/L"
   },
   "possibleDiagnostics": ["Insuffisance cardiaque", "Pneumonie", "Embolie pulmonaire", "Asthme"],
   "correctDiagnostic": "Insuffisance cardiaque",

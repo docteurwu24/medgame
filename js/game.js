@@ -246,8 +246,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 duration: 3, // Durée de l'animation en secondes
             });
 
-            // Arrêt de la musique de fond
-            document.querySelector('audio').pause();
+            // Sauvegarde de l'élément audio pour le réutiliser plus tard
+            const backgroundMusic = document.querySelector('audio');
+            backgroundMusic.pause();
 
             // Lecture du son de succès
             const successSound = new Audio('assets/sounds/feux_artifice.mp3');
@@ -260,6 +261,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             setTimeout(() => {
                 fireworks.stop();
                 loadCase();
+                // Reprise de la musique de fond après le chargement du nouveau cas
+                backgroundMusic.play();
             }, 3000);
 
             scoreDisplay.textContent = `Score final: ${score}`;

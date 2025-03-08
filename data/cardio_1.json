@@ -46,10 +46,19 @@
     "examenAbdominal": { "palpation": "Normal" },
     "examenNeurologique": { "conscience": "Normale" }
   },
-  "availableExams": ["ECG", "Echographie"],
+  "availableExams": ["ECG", "Echographie", "Radio thorax", "Bilan sanguin", "Test d'effort", "Holter ECG", "Coronarographie", "IRM cardiaque", "Scanner cardiaque", "Angioscanner"],
   "examResults": {
     "ECG": "Tachycardie sinusale",
-    "Echographie": "Fraction d’éjection réduite"
+    "Echographie": "Fraction d’éjection réduite",
+    "glycemie": "1.0 g/L",
+    "Radio thorax": "RAS",
+    "Bilan sanguin": "RAS",
+    "Test d'effort": "Positif",
+    "Holter ECG": "RAS",
+    "Coronarographie": "Sténose",
+    "IRM cardiaque": "RAS",
+    "Scanner cardiaque": "RAS",
+    "Angioscanner": "RAS"
   },
     "possibleDiagnostics": ["Insuffisance cardiaque", "Valvulopathie", "Trouble du rythme", "Angor stable"],
   "correctDiagnostic": "Insuffisance cardiaque",

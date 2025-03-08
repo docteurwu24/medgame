@@ -27,7 +27,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     width: 200px;
     text-align: center;
     display: flex;
@@ -37,6 +37,16 @@ body {
 
 .main-menu-button:hover {
     background-color: #0056b3;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
 }
 
 h1 {
@@ -139,6 +149,10 @@ h1 {
 @keyframes color-change-m2 {
   0% { color: indigo; }
   100% { color: violet; }
+}
+.letter-m2 {
+  animation: color-change-m2 2s infinite alternate;
+    color: indigo !important;
 }
 .letter-m2 {
   animation: color-change-m2 2s infinite alternate;
