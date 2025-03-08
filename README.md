@@ -1,6 +1,6 @@
 # Medgame
 
-Medgame est un jeu éducatif simulant des scénarios médicaux pour former les professionnels de la santé.
+Medgame est un jeu éducatif simulant des scénarios médicaux pour s'entrainer à la sémio pour les partiels
 
 ## Installation
 
