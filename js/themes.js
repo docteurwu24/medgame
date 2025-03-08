@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Compte le nombre de cas pour un thème donné
     function getCasesCountByTheme(theme, cases) {
-        return cases[theme] ? cases[theme].length : 0; // Retourne le nombre de fichiers pour ce thème
+        return cases[theme.toLowerCase()] ? cases[theme.toLowerCase()].length : 0; // Retourne le nombre de fichiers pour ce thème
     }
 
     // Met à jour les compteurs
