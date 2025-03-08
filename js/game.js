@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentCaseIndex = 0;
     let currentCase = null;
     let score = 0;
+    let selectedTreatments = [];
 
     const examCategories = {
         "Examens sanguins": ["NFS", "Ionogramme", "Bilan hépatique", "Bilan rénal", "CRP", "Procalcitonine"],
@@ -145,8 +146,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         availableExams.innerHTML = '';
         examensResults.innerHTML = '';
-
-        // Vider la liste des diagnostics possibles
+       // Vider la liste des diagnostics possibles
         const diagnosticSelect = document.getElementById('diagnostic-select');
         diagnosticSelect.innerHTML = '<option value="">Sélectionnez un diagnostic</option>';
 
@@ -159,7 +159,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 diagnosticSelect.appendChild(option);
             });
         }
-        // Afficher les examens disponibles sous forme de boutons
+
+         // Afficher les examens disponibles
         const availableExamsTitle = document.createElement('h3');
         availableExamsTitle.textContent = "Examens disponibles";
         availableExams.appendChild(availableExamsTitle);
@@ -172,19 +173,83 @@ document.addEventListener('DOMContentLoaded', async () => {
             availableExams.appendChild(button);
         });
 
+        // Afficher les traitements disponibles
+        const availableTreatments = document.getElementById('availableTreatments');
+        availableTreatments.innerHTML = ''; // Vider la liste précédente
+
+        const availableTreatmentsTitle = document.createElement('h3');
+        availableTreatmentsTitle.textContent = "Traitements disponibles";
+        availableTreatments.appendChild(availableTreatmentsTitle);
+
+        if (currentCase.possibleTreatments && Array.isArray(currentCase.possibleTreatments)) {
+            currentCase.possibleTreatments.forEach(traitement => {
+                const button = document.createElement('button');
+                button.textContent = traitement;
+                button.dataset.traitement = traitement;
+                button.addEventListener('click', handleTraitementClick);
+                availableTreatments.appendChild(button);
+            });
+        }
+
+        // Réinitialiser les traitements sélectionnés
+        selectedTreatments = [];
+
+        // Vider le feedback des traitements
+        document.getElementById('treatment-feedback').textContent = '';
+
+
         scoreDisplay.textContent = '';
         feedbackDisplay.textContent = '';
         score = 0;
     }
 
-     function handleExamenClick(event) {
+    function handleExamenClick(event) {
         const examen = event.target.dataset.examen;
-
         const result = currentCase.examResults[examen] || "Résultat non disponible";
         alert(`${examen}: ${typeof result === 'object' ? JSON.stringify(result) : result}`);
     }
 
-    document.getElementById('validate-exams').addEventListener('click', () => {
+    function handleTraitementClick(event) {
+        const traitement = event.target.dataset.traitement;
+        if (selectedTreatments.includes(traitement)) {
+            selectedTreatments = selectedTreatments.filter(t => t !== traitement);
+            event.target.classList.remove('selected');
+        } else {
+            selectedTreatments.push(traitement);
+            event.target.classList.add('selected');
+        }
+    }
+
+     document.getElementById('validate-traitement').addEventListener('click', () => {
+        const correctTreatments = currentCase.correctTreatments;
+        let feedback = '';
+        let correctCount = 0;
+
+        // Vérifier si tous les traitements corrects sont sélectionnés
+        const allCorrectSelected = correctTreatments.every(t => selectedTreatments.includes(t));
+
+        // Compter le nombre de traitements corrects sélectionnés
+        selectedTreatments.forEach(t => {
+            if (correctTreatments.includes(t)) {
+                correctCount++;
+            }
+        });
+
+        if (allCorrectSelected && selectedTreatments.length === correctTreatments.length) {
+            feedback = 'Traitement correct !';
+            score += 20; // Ajouter des points pour un traitement correct
+        } else if (correctCount > 0) {
+            feedback = 'Traitement partiellement correct.';
+            score += 10; // Ajouter des points pour un traitement partiellement correct
+        }
+         else {
+            feedback = 'Traitement incorrect.';
+        }
+
+        document.getElementById('treatment-feedback').textContent = feedback;
+    });
+
+        document.getElementById('validate-exams').addEventListener('click', () => {
         let selectedExams = [];
         for (const category in examCategories) {
             const selectId = `select-${category.replace(/\s+/g, '-').toLowerCase()}`;

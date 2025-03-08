@@ -105,3 +105,8 @@ button, input[type="text"] {
 .grid-container p {
     margin: 3px 0;
 }
+
+.selected {
+    background-color: #4CAF50 !important; /* Couleur de fond pour les boutons sélectionnés */
+    color: white !important;
+}
