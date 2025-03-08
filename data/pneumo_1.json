@@ -76,5 +76,7 @@
     "Insuffisance cardiaque": "Diagnostic correct !",
     "default": "Diagnostic incorrect."
   },
-  "scoringRules": { "correctDiagnostic": 100 }
+  "scoringRules": { "baseScore": 100, "attemptPenalty": 10 },
+  "possibleTreatments": ["Oxygénothérapie", "Diurétiques", "Inhibiteurs de l'enzyme de conversion (IEC)", "Bêta-bloquants"],
+  "correctTreatments": ["Diurétiques", "Inhibiteurs de l'enzyme de conversion (IEC)"]
 }

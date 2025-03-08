@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentCase = null;
     let score = 0;
     let selectedTreatments = [];
+    let attempts = 0;
 
     const examCategories = {
         "Examens sanguins": ["NFS", "Ionogramme", "Bilan hépatique", "Bilan rénal", "CRP", "Procalcitonine"],
@@ -201,6 +202,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         scoreDisplay.textContent = '';
         feedbackDisplay.textContent = '';
         score = 0;
+        attempts = 0; // Réinitialiser le nombre d'essais
+    }
+
+     function calculateScore() {
+        let baseScore = currentCase.scoringRules.baseScore || 100;
+        let attemptPenalty = currentCase.scoringRules.attemptPenalty || 10;
+        return Math.max(0, baseScore - (attempts * attemptPenalty)); // Le score ne peut pas être négatif
     }
 
     function handleExamenClick(event) {
@@ -220,36 +228,60 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-     document.getElementById('validate-traitement').addEventListener('click', () => {
+    document.getElementById('validate-traitement').addEventListener('click', () => {
+        attempts++;
         const correctTreatments = currentCase.correctTreatments;
-        let feedback = '';
-        let correctCount = 0;
-
-        // Vérifier si tous les traitements corrects sont sélectionnés
+        const selectedDiagnostic = document.getElementById('diagnostic-select').value;
+        const correctDiagnostic = currentCase.correctDiagnostic;
+         // Vérifier si tous les traitements corrects sont sélectionnés
         const allCorrectSelected = correctTreatments.every(t => selectedTreatments.includes(t));
 
-        // Compter le nombre de traitements corrects sélectionnés
-        selectedTreatments.forEach(t => {
-            if (correctTreatments.includes(t)) {
-                correctCount++;
+        if (selectedDiagnostic === correctDiagnostic && allCorrectSelected && selectedTreatments.length === correctTreatments.length ) {
+            score = calculateScore();
+            feedbackDisplay.textContent = 'Diagnostic et traitement corrects !';
+
+            // Ajout des feux d'artifice
+            const container = document.querySelector('#fireworks-container');
+            const fireworks = new Fireworks(container, {
+                duration: 3, // Durée de l'animation en secondes
+            });
+
+            // Arrêt de la musique de fond
+            document.querySelector('audio').pause();
+
+            // Lecture du son de succès
+            const successSound = new Audio('assets/sounds/feux_artifice.mp3');
+            successSound.play();
+            
+            fireworks.start();
+            // Fin de l'ajout des feux d'artifice
+
+            // Arrêt des feux d'artifice et chargement d'un nouveau cas après 3 secondes
+            setTimeout(() => {
+                fireworks.stop();
+                loadCase();
+            }, 3000);
+
+            scoreDisplay.textContent = `Score final: ${score}`;
+            document.getElementById('treatment-feedback').textContent = ''; // on retire le message d'erreur des traitements car tout est ok
+
+        } else {
+            let feedback = '';
+            if (selectedDiagnostic !== correctDiagnostic){
+                feedback += 'Diagnostic incorrect. ';
+                feedbackDisplay.textContent = feedback;
             }
-        });
+            // Vérifier si TOUS les traitements corrects sont sélectionnés
+            const allTreatmentsCorrect = correctTreatments.every(t => selectedTreatments.includes(t));
 
-        if (allCorrectSelected && selectedTreatments.length === correctTreatments.length) {
-            feedback = 'Traitement correct !';
-            score += 20; // Ajouter des points pour un traitement correct
-        } else if (correctCount > 0) {
-            feedback = 'Traitement partiellement correct.';
-            score += 10; // Ajouter des points pour un traitement partiellement correct
+            if (!allTreatmentsCorrect || selectedTreatments.length !== correctTreatments.length) {
+                feedback += "Traitement incorrect ou incomplet.";
+                document.getElementById('treatment-feedback').textContent = feedback;
+            }
         }
-         else {
-            feedback = 'Traitement incorrect.';
-        }
-
-        document.getElementById('treatment-feedback').textContent = feedback;
     });
 
-        document.getElementById('validate-exams').addEventListener('click', () => {
+    document.getElementById('validate-exams').addEventListener('click', () => {
         let selectedExams = [];
         for (const category in examCategories) {
             const selectId = `select-${category.replace(/\s+/g, '-').toLowerCase()}`;
@@ -261,8 +293,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         console.log("Examens sélectionnés:", selectedExams);
-
-         
     });
 
     function handleShowResultClick(event) {
@@ -276,17 +306,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 1000); // Délai de 1 seconde
     }
 
-    validateDiagnosticButton.addEventListener('click', () => {
+     validateDiagnosticButton.addEventListener('click', () => {
+        attempts++;
         const selectedDiagnostic = document.getElementById('diagnostic-select').value;
         const correctDiagnostic = currentCase.correctDiagnostic;
 
-        if (selectedDiagnostic === correctDiagnostic) {
-            feedbackDisplay.textContent = 'Diagnostic correct !';
-            score += 10; // Ajouter 10 points pour un diagnostic correct
-        } else {
+        if (selectedDiagnostic !== correctDiagnostic) {
             feedbackDisplay.textContent = 'Diagnostic incorrect. Essayez encore.';
         }
-        scoreDisplay.textContent = `Score: ${score}`;
+         else {
+            feedbackDisplay.textContent = 'Diagnostic correct !';
+         }
     });
 
     nextCaseButton.addEventListener('click', () => {

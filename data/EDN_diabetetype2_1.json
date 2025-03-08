@@ -57,5 +57,7 @@
   "Diabète de type 2": "Diagnostic correct !",
   "default": "Diagnostic incorrect."
   },
-  "scoringRules": { "correctDiagnostic": 100 }
-  }
+  "scoringRules": { "baseScore": 100, "attemptPenalty": 10 },
+  "possibleTreatments": ["Metformine", "Régime", "Insuline", "Sulfamides hypoglycémiants"],
+  "correctTreatments": ["Metformine", "Régime"]
+}
