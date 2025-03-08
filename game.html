@@ -121,12 +121,19 @@
 
             <div class="medical-card" id="diagnostic">
                 <h2 class="section-title"><i class="fas fa-diagnoses"></i> Diagnostic</h2>
-                <input type="text" id="diagnostic-input" placeholder="Entrez votre diagnostic">
+                <select id="diagnostic-select">
+                    <option value="">Sélectionnez un diagnostic</option>
+                </select>
                 <button id="validate-diagnostic">Valider</button>
                 <p id="score"></p>
-                <p id="feedback"></p>       
+                <p id="feedback"></p>
                 <p id="correctDiagnostic"></p>
+
+                <h2 class="section-title"><i class="fas fa-prescription"></i>Préscription</h2>
+                <div id="availableTraitements"></div>
+                <button id="validate-traitement">Valider</button>
             </div>
+
         </div>
 
         <div style="display: flex; justify-content: space-between; margin-top: 5px;">

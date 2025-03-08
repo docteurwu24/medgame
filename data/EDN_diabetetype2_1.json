@@ -51,6 +51,7 @@
   "Bilan sanguin": "Glycémie à jeun : 1.8 g/L, HbA1c : 8.2%, Cholestérol total : 2.5 g/L, Triglycérides : 2.8 g/L, HDL-cholestérol : 0.4 g/L, LDL-cholestérol : 1.5 g/L",
   "ECG": "Normal"
   },
+  "possibleDiagnostics": ["Diabète de type 2", "Diabète de type 1", "Pré-diabète", "RAS"],
   "correctDiagnostic": "Diabète de type 2",
   "feedback": {
   "Diabète de type 2": "Diagnostic correct !",

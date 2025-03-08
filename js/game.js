@@ -146,6 +146,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         availableExams.innerHTML = '';
         examensResults.innerHTML = '';
 
+        // Vider la liste des diagnostics possibles
+        const diagnosticSelect = document.getElementById('diagnostic-select');
+        diagnosticSelect.innerHTML = '<option value="">Sélectionnez un diagnostic</option>';
+
+        // Remplir la liste avec les diagnostics possibles du cas courant
+        if (currentCase.possibleDiagnostics && Array.isArray(currentCase.possibleDiagnostics)) {
+            currentCase.possibleDiagnostics.forEach(diagnostic => {
+                const option = document.createElement('option');
+                option.value = diagnostic;
+                option.textContent = diagnostic;
+                diagnosticSelect.appendChild(option);
+            });
+        }
         // Afficher les examens disponibles sous forme de boutons
         const availableExamsTitle = document.createElement('h3');
         availableExamsTitle.textContent = "Examens disponibles";
@@ -159,13 +172,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             availableExams.appendChild(button);
         });
 
-        diagnosticInput.value = '';
         scoreDisplay.textContent = '';
         feedbackDisplay.textContent = '';
         score = 0;
     }
 
-    function handleExamenClick(event) {
+     function handleExamenClick(event) {
         const examen = event.target.dataset.examen;
 
         const result = currentCase.examResults[examen] || "Résultat non disponible";
@@ -200,53 +212,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     validateDiagnosticButton.addEventListener('click', () => {
-    const userDiagnostic = diagnosticInput.value.trim();
-    const correctDiagnostic = currentCase.correctDiagnostic;
-    let feedback = currentCase.feedback[userDiagnostic] || "Diagnostic incorrect. Veuillez réessayer.";
+        const selectedDiagnostic = document.getElementById('diagnostic-select').value;
+        const correctDiagnostic = currentCase.correctDiagnostic;
 
-    let diagnosticScore = 0;
-    if (userDiagnostic.toLowerCase() === correctDiagnostic.toLowerCase()) {
-        diagnosticScore = currentCase.scoringRules.correctDiagnostic || 0;
-        feedback = currentCase.feedback[userDiagnostic] || "Diagnostic correct.";
-    } else if (isSimilarDiagnostic(userDiagnostic, correctDiagnostic)) {
-        diagnosticScore = (currentCase.scoringRules.correctDiagnostic || 0) / 2; // Score partiel
-        feedback = "Diagnostic partiellement correct. Veuillez affiner votre diagnostic.";
-    }
-
-    feedbackDisplay.textContent = feedback;
-
-    // Déduction du coût des examens
-    let examCost = 0;
-    const examCategoryCosts = {
-        "Examens sanguins": 10,
-        "Imagerie": 20,
-        "Tests fonctionnels": 15,
-        "Examens microbiologiques": 25
-    };
-
-    let selectedExamsCost = 0;
-    for (const category in examCategories) {
-        const selectId = `select-${category.replace(/\s+/g, '-').toLowerCase()}`;
-        const selectElement = document.getElementById(selectId);
-        if (selectElement) {
-            const selectedOptions = Array.from(selectElement.selectedOptions);
-            if (selectedOptions.length > 0) {
-                selectedExamsCost += examCategoryCosts[category] || 0;
-            }
+        if (selectedDiagnostic === correctDiagnostic) {
+            feedbackDisplay.textContent = 'Diagnostic correct !';
+            score += 10; // Ajouter 10 points pour un diagnostic correct
+        } else {
+            feedbackDisplay.textContent = 'Diagnostic incorrect. Essayez encore.';
         }
-    }
-
-    score = diagnosticScore - selectedExamsCost;
-    scoreDisplay.textContent = `Score: ${score.toFixed(2)}`;
-});
-
-function isSimilarDiagnostic(userDiagnostic, correctDiagnostic) {
-    // Implémentation simplifiée de la comparaison des diagnostics
-    const userKeywords = userDiagnostic.toLowerCase().split(' ');
-    const correctKeywords = correctDiagnostic.toLowerCase().split(' ');
-    let commonKeywords = userKeywords.filter(keyword => correctKeywords.includes(keyword));
-    return commonKeywords.length > 0;
-}
+        scoreDisplay.textContent = `Score: ${score}`;
+    });
 
     nextCaseButton.addEventListener('click', () => {
         currentCaseIndex = (currentCaseIndex + 1) % cases.length;

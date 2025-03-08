@@ -51,6 +51,7 @@
     "ECG": "Tachycardie sinusale",
     "Echographie": "Fraction d’éjection réduite"
   },
+    "possibleDiagnostics": ["Insuffisance cardiaque", "Valvulopathie", "Trouble du rythme", "Angor stable"],
   "correctDiagnostic": "Insuffisance cardiaque",
   "feedback": {
     "Insuffisance cardiaque": "Diagnostic correct !",

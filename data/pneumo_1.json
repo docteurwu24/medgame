@@ -70,6 +70,7 @@
     "Dosage des BNP": "800 pg/mL (valeur normale < 100 pg/mL)",
     "Scanner thoracique": "Absence de thrombus pulmonaire, présence de foyers de condensation alvéolaire"
   },
+  "possibleDiagnostics": ["Insuffisance cardiaque", "Pneumonie", "Embolie pulmonaire", "Asthme"],
   "correctDiagnostic": "Insuffisance cardiaque",
   "feedback": {
     "Insuffisance cardiaque": "Diagnostic correct !",
