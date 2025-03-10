@@ -10,7 +10,7 @@
   "groupeSanguin": "O+"
   },
   "interrogatoire": {
-  "motifHospitalisation": "**Perte de poids importante et inquiétude concernant l'image corporelle**",
+  "motifHospitalisation": " Perte de poids importante et inquiétude concernant l'image corporelle ",
   "modeDeVie": {
   "activitePhysique": {
   "description": "Activité physique modérée (marche occasionnelle)"
@@ -23,12 +23,12 @@
   "quantite": "Négligeable"
   },
   "alimentation": {
-  "regime": "**Très restrictif, évite les graisses et les sucres**",
-  "particularites": "**Obsédée par le comptage des calories**"
+  "regime": " Très restrictif, évite les graisses et les sucres ",
+  "particularites": " Obsédée par le comptage des calories "
   },
   "reseauxSociaux": {
-  "utilisation": "**Utilisation excessive de réseaux sociaux axés sur l'image corporelle**",
-  "influence": "**Se compare constamment aux influenceurs et modèles**"
+  "utilisation": " Utilisation excessive de réseaux sociaux axés sur l'image corporelle ",
+  "influence": " Se compare constamment aux influenceurs et modèles "
   },
   "emploi": {
   "profession": "Collégienne",
@@ -40,7 +40,7 @@
   "chirurgicaux": [],
   "familiaux": [{
   "lien": "Mère",
-  "pathologie": "**Antécédents de troubles anxieux**",
+  "pathologie": " Antécédents de troubles anxieux ",
   "age": "45"
   }]
   },
@@ -50,11 +50,11 @@
   "liste": []
   },
   "histoireMaladie": {
-  "debutSymptomes": "**Environ 6 mois**",
+  "debutSymptomes": " Environ 6 mois ",
   "evolution": "Progressive",
-  "facteursDeclenchants": "**Pression sociale et exposition à des images corporelles idéalisées sur les réseaux sociaux**",
-  "symptomesAssocies": ["**Fatigue, aménorrhée, tristesse**"],
-  "remarques": "**Très préoccupée par son apparence, se sent mal à l'aise en public**"
+  "facteursDeclenchants": " Pression sociale et exposition à des images corporelles idéalisées sur les réseaux sociaux ",
+  "symptomesAssocies": [" Fatigue, aménorrhée, tristesse "],
+  "remarques": " Très préoccupée par son apparence, se sent mal à l'aise en public "
   }
   },
   "examenClinique": {
@@ -65,9 +65,9 @@
   "saturationO2": "98%",
   "frequenceRespiratoire": "14/min"
   },
-  "aspectGeneral": "**Apparence maigre, peau pâle**",
+  "aspectGeneral": " Apparence maigre, peau pâle ",
   "examenCardiovasculaire": {
-  "auscultation": "**Bradycardie**"
+  "auscultation": " Bradycardie "
   },
   "examenPulmonaire": {
   "auscultation": "Normal"
@@ -92,13 +92,13 @@
   "Évaluation de la composition corporelle par DEXA"
   ],
   "examResults": {
-  "Bilan sanguin complet": "**Anémie légère, hypokaliémie**",
+  "Bilan sanguin complet": " Anémie légère, hypokaliémie ",
   "Bilan thyroïdien": "Normal",
-  "Examen psychologique approfondi": "**Anxiété, troubles de l'image corporelle, préoccupations alimentaires**",
+  "Examen psychologique approfondi": " Anxiété, troubles de l'image corporelle, préoccupations alimentaires ",
   "Dosage des D-dimères": "Normal",
   "Sérologie VIH": "Négatif",
   "Bilan hépatique": "Normal",
-  "ECG": "**Bradycardie sinusale**",
+  "ECG": " Bradycardie sinusale ",
   "Glycémie (contrôle)": "0.7 g/L",
   "Mesure de l'impédancemétrie bioélectrique": "Masse grasse diminuée",
   "Ostéodensitométrie": "Densité osseuse normale",

@@ -10,7 +10,7 @@
   "groupeSanguin": "A+"
   },
   "interrogatoire": {
-  "motifHospitalisation": "**Prise de poids et crises de boulimie**",
+  "motifHospitalisation": " Prise de poids et crises de boulimie ",
   "modeDeVie": {
   "activitePhysique": {
   "description": "Sédentaire"
@@ -23,8 +23,8 @@
   "quantite": "Modérée"
   },
   "alimentation": {
-  "regime": "**Aléatoire, périodes de restriction suivies de crises**",
-  "particularites": "**Mange de grandes quantités en peu de temps, souvent seul**"
+  "regime": " Aléatoire, périodes de restriction suivies de crises ",
+  "particularites": " Mange de grandes quantités en peu de temps, souvent seul "
   },
   "emploi": {
   "profession": "Employé de bureau",
@@ -36,7 +36,7 @@
   "chirurgicaux": [],
   "familiaux": [{
   "lien": "Père",
-  "pathologie": "**Obésité, diabète de type 2**",
+  "pathologie": " Obésité, diabète de type 2 ",
   "age": "55"
   }]
   },
@@ -46,11 +46,11 @@
   "liste": []
   },
   "histoireMaladie": {
-  "debutSymptomes": "**Environ un an**",
+  "debutSymptomes": " Environ un an ",
   "evolution": "Progressive",
-  "facteursDeclenchants": "**Stress, ennui, émotions négatives**",
-  "symptomesAssocies": ["**Culpabilité, honte, prise de poids**"],
-  "remarques": "**Se sent mal à l'aise en public, surtout lors des repas. Tendance à s'isoler**"
+  "facteursDeclenchants": " Stress, ennui, émotions négatives ",
+  "symptomesAssocies": [" Culpabilité, honte, prise de poids "],
+  "remarques": " Se sent mal à l'aise en public, surtout lors des repas. Tendance à s'isoler "
   }
   },
   "examenClinique": {
@@ -61,7 +61,7 @@
   "saturationO2": "97%",
   "frequenceRespiratoire": "18/min"
   },
-  "aspectGeneral": "**Surpoids**",
+  "aspectGeneral": " Surpoids ",
   "examenCardiovasculaire": {
   "auscultation": "Normal"
   },
@@ -90,9 +90,9 @@
   "examResults": {
   "Bilan sanguin complet": "Normal",
   "Bilan thyroïdien": "Normal",
-  "Examen psychologique": "**Signes de dépression et d'anxiété, préoccupations concernant le poids et l'alimentation**",
+  "Examen psychologique": " Signes de dépression et d'anxiété, préoccupations concernant le poids et l'alimentation ",
   "Dosage de la glycémie": "Normal",
-  "Bilan lipidique": "**Cholestérol légèrement élevé**",
+  "Bilan lipidique": " Cholestérol légèrement élevé ",
   "Glycémie (contrôle)": "1.1 g/L",
   "Électrocardiogramme (ECG)": "Normal",
   "Mesure de la kaliémie": "Normal",

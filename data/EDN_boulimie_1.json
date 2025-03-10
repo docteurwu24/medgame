@@ -10,7 +10,7 @@
   "groupeSanguin": "B+"
   },
   "interrogatoire": {
-  "motifHospitalisation": "**Préoccupations concernant des crises de boulimie**",
+  "motifHospitalisation": " Préoccupations concernant des crises de boulimie ",
   "modeDeVie": {
   "activitePhysique": {
   "description": "Marche occasionnelle"
@@ -23,8 +23,8 @@
   "quantite": "Social"
   },
   "alimentation": {
-  "regime": "**Varie, parfois restrictif, parfois périodes de consommation excessive**",
-  "particularites": "**Se sent coupable après avoir trop mangé**"
+  "regime": " Varie, parfois restrictif, parfois périodes de consommation excessive ",
+  "particularites": " Se sent coupable après avoir trop mangé "
   },
   "emploi": {
   "profession": "Étudiante",
@@ -36,7 +36,7 @@
   "chirurgicaux": [],
   "familiaux": [{
   "lien": "Mère",
-  "pathologie": "**Surpoids**",
+  "pathologie": " Surpoids ",
   "age": "50"
   }]
   },
@@ -46,11 +46,11 @@
   "liste": []
   },
   "histoireMaladie": {
-  "debutSymptomes": "**Quelques mois**",
+  "debutSymptomes": " Quelques mois ",
   "evolution": "Fluctuante",
-  "facteursDeclenchants": "**Stress, émotions négatives**",
-  "symptomesAssocies": ["**Culpabilité, tristesse**"],
-  "remarques": "**Craint de prendre du poids, se compare aux autres**"
+  "facteursDeclenchants": " Stress, émotions négatives ",
+  "symptomesAssocies": [" Culpabilité, tristesse "],
+  "remarques": " Craint de prendre du poids, se compare aux autres "
   }
   },
   "examenClinique": {
@@ -90,7 +90,7 @@
   "examResults": {
   "Bilan sanguin complet": "Normal",
   "Bilan thyroïdien": "Normal",
-  "Examen psychologique": "**Préoccupations concernant l'alimentation, estime de soi influencée par le poids**",
+  "Examen psychologique": " Préoccupations concernant l'alimentation, estime de soi influencée par le poids ",
   "Dosage des D-dimères": "Normal",
   "Glycémie (contrôle)": "0.9 g/L",
   "Électrocardiogramme (ECG)": "Normal",
