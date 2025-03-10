@@ -1,3 +1,5 @@
+// Y'a qql qui va lire le code ?? si oui veuillez me contacter sur discord : docteur_wu
+
 document.addEventListener('DOMContentLoaded', async () => {
     const motifHospitalisation = document.getElementById('motif-hospitalisation');
     const activitePhysique = document.getElementById('activite-physique');
@@ -40,6 +42,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     let score = 0;
     let selectedTreatments = [];
     let attempts = 0;
+    let timeLeft = 180; // 3 minutes
+    let timerInterval;
+
+    function displayTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        document.getElementById('timer').textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    }
+
+    function updateTimer() {
+        if (timeLeft > 0) {
+            timeLeft--;
+            displayTime(timeLeft);
+        } else {
+            clearInterval(timerInterval);
+            alert('Temps écoulé !');
+            // Ici, vous pouvez ajouter une logique pour empêcher le joueur de continuer
+        }
+    }
 
     // Cookie management functions
     function setCookie(name, value, days) {
@@ -128,6 +149,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
    function loadCase() {
+        timeLeft = 150; // Réinitialiser le temps à 2 minutes 30
+        displayTime(timeLeft);
+        clearInterval(timerInterval); // Effacer l'ancien intervalle
+        timerInterval = setInterval(updateTimer, 1000); // Démarrer le minuteur
+
         if (cases.length === 0) {
             alert('Aucun cas clinique trouvé.');
             return;
@@ -403,6 +429,9 @@ document.getElementById('validate-traitement').addEventListener('click', () => {
         if (cases.length > 0) {
             loadCase();
         }
+        displayTime(timeLeft);
+        clearInterval(timerInterval); // Effacer l'ancien intervalle
+        timerInterval = setInterval(updateTimer, 1000); // Démarrer le minuteur
     }
     
     examensResults.innerHTML = '';
