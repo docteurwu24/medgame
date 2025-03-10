@@ -106,11 +106,6 @@ button, input[type="text"] {
     margin: 3px 0;
 }
 
-.selected {
-    background-color: #4CAF50 !important; /* Couleur de fond pour les boutons sélectionnés */
-    color: white !important;
-}
-
 #fireworks-container {
     position: fixed;
     top: 0;
@@ -118,4 +113,19 @@ button, input[type="text"] {
     width: 100%;
     height: 100%;
     pointer-events: none; /* Permet de cliquer à travers le conteneur */
+}
+
+.selected {
+    background-color: lightgray;
+    color: black;
+}
+
+#availableTreatments button.correct-treatment {
+    background-color: green;
+    color: white;
+}
+
+#availableTreatments button.incorrect-treatment {
+    background-color: red;
+    color: white;
 }

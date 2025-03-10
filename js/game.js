@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert(`${examen}: ${typeof result === 'object' ? JSON.stringify(result) : result}`);
     }
 
-    function handleTraitementClick(event) {
+function handleTraitementClick(event) {
         const traitement = event.target.dataset.traitement;
         if (selectedTreatments.includes(traitement)) {
             selectedTreatments = selectedTreatments.filter(t => t !== traitement);
@@ -228,61 +228,78 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    document.getElementById('validate-traitement').addEventListener('click', () => {
-        attempts++;
-        const correctTreatments = currentCase.correctTreatments;
-        const selectedDiagnostic = document.getElementById('diagnostic-select').value;
-        const correctDiagnostic = currentCase.correctDiagnostic;
-         // Vérifier si tous les traitements corrects sont sélectionnés
-        const allCorrectSelected = correctTreatments.every(t => selectedTreatments.includes(t));
+document.getElementById('validate-traitement').addEventListener('click', () => {
+    attempts++;
+    const correctTreatments = currentCase.correctTreatments;
+    const selectedDiagnostic = document.getElementById('diagnostic-select').value;
+    const correctDiagnostic = currentCase.correctDiagnostic;
 
-        if (selectedDiagnostic === correctDiagnostic && allCorrectSelected && selectedTreatments.length === correctTreatments.length ) {
-            score = calculateScore();
-            feedbackDisplay.textContent = 'Diagnostic et traitement corrects !';
+    const allCorrectSelected = correctTreatments.every(t => selectedTreatments.includes(t));
 
-            // Ajout des feux d'artifice
-            const container = document.querySelector('#fireworks-container');
-            const fireworks = new Fireworks(container, {
-                duration: 3, // Durée de l'animation en secondes
-            });
+    if (selectedDiagnostic === correctDiagnostic && allCorrectSelected && selectedTreatments.length === correctTreatments.length) {
+        score = calculateScore();
+        feedbackDisplay.textContent = 'Diagnostic et traitement corrects !';
 
-            // Sauvegarde de l'élément audio pour le réutiliser plus tard
-            const backgroundMusic = document.querySelector('audio');
-            backgroundMusic.pause();
+        // Ajout des feux d'artifice
+        const container = document.querySelector('#fireworks-container');
+        const fireworks = new Fireworks(container, {
+            duration: 3, // Durée de l'animation en secondes
+        });
 
-            // Lecture du son de succès
-            const successSound = new Audio('assets/sounds/feux_artifice.mp3');
-            successSound.play();
-            
-            fireworks.start();
-            // Fin de l'ajout des feux d'artifice
+        // Sauvegarde de l'élément audio pour le réutiliser plus tard
+        const backgroundMusic = document.querySelector('audio');
+        backgroundMusic.pause();
 
-            // Arrêt des feux d'artifice et chargement d'un nouveau cas après 3 secondes
-            setTimeout(() => {
-                fireworks.stop();
-                loadCase();
-                // Reprise de la musique de fond après le chargement du nouveau cas
-                backgroundMusic.play();
-            }, 3000);
+        // Lecture du son de succès
+        const successSound = new Audio('assets/sounds/feux_artifice.mp3');
+        successSound.play();
 
-            scoreDisplay.textContent = `Score final: ${score}`;
-            document.getElementById('treatment-feedback').textContent = ''; // on retire le message d'erreur des traitements car tout est ok
+        fireworks.start();
+        // Fin de l'ajout des feux d'artifice
 
-        } else {
-            let feedback = '';
-            if (selectedDiagnostic !== correctDiagnostic){
-                feedback += 'Diagnostic incorrect. ';
-                feedbackDisplay.textContent = feedback;
+        // Arrêt des feux d'artifice et chargement d'un nouveau cas après 3 secondes
+        setTimeout(() => {
+            fireworks.stop();
+            loadCase();
+            // Reprise de la musique de fond après le chargement du nouveau cas
+            backgroundMusic.play();
+        }, 3000);
+
+        scoreDisplay.textContent = `Score final: ${score}`;
+        document.getElementById('treatment-feedback').textContent = '';
+
+    } else {
+        let feedback = '';
+        if (selectedDiagnostic !== correctDiagnostic) {
+            feedback += 'Diagnostic incorrect. ';
+            feedbackDisplay.textContent = feedback;
+        }
+
+        const allTreatmentsCorrect = correctTreatments.every(t => selectedTreatments.includes(t));
+
+        if (!allTreatmentsCorrect || selectedTreatments.length !== correctTreatments.length) {
+            feedback += "Traitement incorrect ou incomplet.";
+            document.getElementById('treatment-feedback').textContent = feedback;
+        }
+    }
+
+    // Gestion des classes CSS pour les boutons de traitement
+    const treatmentButtons = document.querySelectorAll('#availableTreatments button');
+    treatmentButtons.forEach(button => {
+        const traitement = button.dataset.traitement;
+        button.classList.remove('correct-treatment', 'incorrect-treatment'); // Retirer les classes précédentes
+
+        if (correctTreatments.includes(traitement)) {
+            if (selectedTreatments.includes(traitement)) {
+                button.classList.add('correct-treatment'); // Vert si correct et sélectionné
             }
-            // Vérifier si TOUS les traitements corrects sont sélectionnés
-            const allTreatmentsCorrect = correctTreatments.every(t => selectedTreatments.includes(t));
-
-            if (!allTreatmentsCorrect || selectedTreatments.length !== correctTreatments.length) {
-                feedback += "Traitement incorrect ou incomplet.";
-                document.getElementById('treatment-feedback').textContent = feedback;
+        } else {
+            if (selectedTreatments.includes(traitement)) {
+                button.classList.add('incorrect-treatment'); // Rouge si incorrect et sélectionné
             }
         }
     });
+});
 
     document.getElementById('validate-exams').addEventListener('click', () => {
         let selectedExams = [];
