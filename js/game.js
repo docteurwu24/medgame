@@ -41,6 +41,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     let selectedTreatments = [];
     let attempts = 0;
 
+    // Cookie management functions
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        let nameEQ = name + "=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        document.cookie = name + '=; path=/; Max-Age=-99999999;';
+    }
+
     const examCategories = {
         "Examens sanguins": ["NFS", "Ionogramme", "Bilan hépatique", "Bilan rénal", "CRP", "Procalcitonine"],
         "Imagerie": ["Radiographie pulmonaire", "Echographie abdominale", "Scanner cérébral", "IRM médullaire", "Radiographie thoracique"],
@@ -101,15 +127,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         element.textContent = value;
     }
 
-    function loadCase() {
+   function loadCase() {
         if (cases.length === 0) {
             alert('Aucun cas clinique trouvé.');
             return;
         }
-    
-        // Sélection aléatoire d’un cas
-        currentCaseIndex = Math.floor(Math.random() * cases.length);
-        currentCase = cases[currentCaseIndex];
+
+        let playedCases = getCookie('playedCases');
+        playedCases = playedCases ? playedCases.split(',') : [];
+
+        // Sélection aléatoire d’un cas non joué
+        let availableCases = cases.filter(caseItem => !playedCases.includes(caseItem.id));
+
+        if (availableCases.length === 0) {
+            alert('Tous les cas ont été joués !');
+            return;
+        }
+
+        currentCase = availableCases[Math.floor(Math.random() * availableCases.length)];
+        currentCaseIndex = cases.indexOf(currentCase);
 
         displayValue(document.getElementById('patient-nom'), currentCase.patient.nom);
         displayValue(document.getElementById('patient-prenom'), currentCase.patient.prenom);
@@ -273,6 +309,12 @@ document.getElementById('validate-traitement').addEventListener('click', () => {
 
         scoreDisplay.textContent = `Score final: ${score}`;
         document.getElementById('treatment-feedback').textContent = '';
+
+        // Mise à jour du cookie
+        let playedCases = getCookie('playedCases');
+        playedCases = playedCases ? playedCases.split(',') : [];
+        playedCases.push(currentCase.id);
+        setCookie('playedCases', playedCases.join(','), 365);
 
     } else {
         let feedback = '';
