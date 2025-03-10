@@ -163,7 +163,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
          // Afficher les examens disponibles
         const availableExamsTitle = document.createElement('h3');
-        availableExamsTitle.textContent = "Examens disponibles";
         availableExams.appendChild(availableExamsTitle);
 
         currentCase.availableExams.forEach(examen => {
@@ -179,7 +178,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         availableTreatments.innerHTML = ''; // Vider la liste précédente
 
         const availableTreatmentsTitle = document.createElement('h3');
-        availableTreatmentsTitle.textContent = "Traitements disponibles";
         availableTreatments.appendChild(availableTreatmentsTitle);
 
         if (currentCase.possibleTreatments && Array.isArray(currentCase.possibleTreatments)) {
@@ -191,6 +189,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 availableTreatments.appendChild(button);
             });
         }
+
+        gsap.from(".medical-card", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
 
         // Réinitialiser les traitements sélectionnés
         selectedTreatments = [];
@@ -280,6 +286,9 @@ document.getElementById('validate-traitement').addEventListener('click', () => {
         if (!allTreatmentsCorrect || selectedTreatments.length !== correctTreatments.length) {
             feedback += "Traitement incorrect ou incomplet.";
             document.getElementById('treatment-feedback').textContent = feedback;
+
+            const incorrectSound = new Audio('assets/sounds/wrong buzzer.mp3');
+            incorrectSound.play();
         }
     }
 
@@ -318,6 +327,9 @@ document.getElementById('validate-traitement').addEventListener('click', () => {
     function handleShowResultClick(event) {
        const examen = event.target.dataset.examen;
         // Simuler un délai avant d'afficher le résultat
+        const examSound = new Audio('assets/sounds/bip.m4a');
+        examSound.play();
+
         setTimeout(() => {
             const result = currentCase.examResults[examen] || "Résultat non disponible";
             const resultDiv = document.createElement('div');

@@ -129,3 +129,13 @@ button, input[type="text"] {
     background-color: red;
     color: white;
 }
+
+#validate-diagnostic {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#validate-traitement {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
