@@ -28,7 +28,7 @@ Téléchargez et installez Python depuis [https://www.python.org/downloads/](htt
 2.  Démarre un serveur local :
 
     ```bash
-    python -m http.server 8000
+    py -m http.server 8000
     ```
 3.  Ouvre ton navigateur et va sur :
 
